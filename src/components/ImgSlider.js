@@ -65,10 +65,15 @@ const Wrap = styled.div`
         border: 4px solid transparent;
         border-radius: 8px;
         width: 100%;
-        height: 100%;
         transition-duration: 200ms;
         &:hover {
             border: 4px solid rgba(249, 249, 249, .8);
         }
     }
+
+    /* @media (max-width: 768px) {
+      img {
+        height: 350px;
+      }
+    } */
 `;
