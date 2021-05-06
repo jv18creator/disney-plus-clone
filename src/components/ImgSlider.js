@@ -63,7 +63,7 @@ const Wrap = styled.div`
     img {
         cursor: pointer;
         border: 4px solid transparent;
-        border-radius: 4px;
+        border-radius: 8px;
         width: 100%;
         height: 100%;
         transition-duration: 200ms;
