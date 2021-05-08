@@ -1,23 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import { selectMovies } from "../features/movie/movieSlice";
+import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom'
 
 const Movies = () => {
+  const movies = useSelector(selectMovies);
+  // console.log(movies);
   return (
     <Container>
       <h4>Recommended for You</h4>
       <Content>
-        <Wrap>
-          <img src="" alt="recomended" />
-        </Wrap>
-        <Wrap>
-          <img src="" alt="recomended" />
-        </Wrap>
-        <Wrap>
-          <img src="" alt="recomended" />
-        </Wrap>
-        <Wrap>
-          <img src="" alt="recomended" />
-        </Wrap>
+        {movies &&
+          movies.map((movie) => (
+            <Wrap key={movie.id}>
+              <Link to={`/details/${movie.id}`}>
+                <img src={movie.cardImg} alt={movie.type} />
+              </Link>
+            </Wrap>
+          ))}
       </Content>
     </Container>
   );
@@ -29,7 +30,7 @@ const Container = styled.div``;
 const Content = styled.div`
   display: grid;
   grid-gap: 25px;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   /* place-items: center; */
   @media (max-width: 768px) {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -44,6 +45,6 @@ const Wrap = styled.div`
     object-fit: cover;
   }
   &:hover {
-      transform: scale(1.05);
+    transform: scale(1.05);
   }
 `;
